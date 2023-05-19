@@ -23,10 +23,13 @@ public class Tickets {
         return (ArrayList<Flight>) list;
     }
 
-    public void removeUser(Flight flight ,User user) {
+    public Flight removeUser(String ticketId) {
         for (Ticket ticket1 : tickets)
-            if(ticket1.getUser() == user && ticket1.getFlight()==flight)
+            if(ticket1.getTicketId() == ticketId ) {
                 tickets.remove(ticket1);
+                return ticket1.getFlight();
+            }
+        return null;
     }
 
     public void add(Flight flight, User user) {

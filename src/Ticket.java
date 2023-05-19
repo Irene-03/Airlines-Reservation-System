@@ -13,6 +13,10 @@ public class Ticket {
         ticketId = "wh-"+flight.getFlightId()+"-"+user.getUsername()+"-"+random.nextInt(10)+random.nextInt(10)+random.nextInt(10);
     }
 
+    public String getTicketId() {
+        return ticketId;
+    }
+
     public Flight getFlight() {
         return flight;
     }

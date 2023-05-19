@@ -74,13 +74,12 @@ public class UserMenu extends Menu {
     }
 
     private void cancellationProcess() {
-        Flight flight = flights.findFlight(inputProcess("Flight ID :"));
+        Flight flight = tickets.removeUser(inputProcess("Ticket ID :"));
         if (flight != null) {
-            tickets.removeUser(flight, user);
             user.updateCharge(-flight.getPrice());
             flight.updateSeats(1);
         } else
-            System.out.println("No flight with this ID");
+            System.out.println("No ticket with this ID");
 
 
     }

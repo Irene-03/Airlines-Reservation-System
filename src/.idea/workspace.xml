@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac89170f-405e-4cbd-88ea-b2524214c256" name="Changes" comment="" />
+    <list default="true" id="ac89170f-405e-4cbd-88ea-b2524214c256" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AdminMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Flights.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MenuAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MenuUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PrimaryData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ticket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tickets.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Users.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Worker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/AdminMenu$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/AdminMenu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/Flight.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/Flights.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/Menu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/MenuAdmin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/MenuUser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/PrimaryData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/Ticket.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/Tickets.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/UserMenu$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/UserMenu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/src/Users.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,23 +56,33 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2PAxaEAUN9dgNd46pa8cpAreEdQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/B - University/AP - JAVA/projects/Airlines-reservation-system-2/src&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/B - University/AP - JAVA/projects/Airlines-reservation-system-2/src",
+    "settings.editor.selected.configurable": "Errors"
+  },
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "module",
+      "directory"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -61,11 +111,24 @@
       <workItem from="1684053323123" duration="3370000" />
       <workItem from="1684305911580" duration="529000" />
       <workItem from="1684306468140" duration="13336000" />
+      <workItem from="1684406258490" duration="1430000" />
+      <workItem from="1684469003596" duration="826000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
