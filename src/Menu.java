@@ -49,7 +49,7 @@ public class Menu {
     private void signUp() {
         String user = inputProcess("username:");
         String pass = inputProcess("password :");
-        if(users.check(user,pass) == null)
+        if(!users.existValue(user))
             users.add(user,new User(user,pass));
         else
             System.out.println("An account with submitted username and password currently existed");

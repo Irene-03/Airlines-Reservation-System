@@ -22,7 +22,7 @@ public class AdminMenu extends Menu {
         label:
         while (true) {
             printAdminMenu();
-                switch (MenuAdmin.getValue(inputNumber())) {
+                switch (AdminEnum.getValue(inputNumber())) {
                     case ADD_FLIGHT -> addProcess();
                     case UPDATE_FLIGHT -> updateProcess();
                     case REMOVE_FLIGHT -> removeProcess();

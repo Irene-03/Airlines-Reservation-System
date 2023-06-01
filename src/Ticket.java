@@ -37,6 +37,11 @@ public class Ticket {
         return false;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                ", ticketId='" + ticketId + '\'' +
+                "flight=" + flight +
+                '}';
+    }
 }

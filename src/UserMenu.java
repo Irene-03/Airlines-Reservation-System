@@ -14,7 +14,7 @@ public class UserMenu extends Menu {
         label:
         while (true) {
             printUserMenu();
-            switch (MenuUser.getValue(inputNumber())) {
+            switch (UserEnum.getValue(inputNumber())) {
                 case CHANGE_PASSWORD -> changePassword();
                 case SEARCH_FLIGHT -> searchProcess();
                 case BOOKING_TICKET -> bookingProcess();
@@ -83,7 +83,7 @@ public class UserMenu extends Menu {
 
     private void showBookedProcess() {
         for (Ticket ticket : tickets.searcher(user))
-            System.out.println(ticket.getFlight());
+            System.out.println(ticket);
     }
 
     public void printUserMenu() {
