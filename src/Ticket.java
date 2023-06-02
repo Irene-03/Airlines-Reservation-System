@@ -11,7 +11,7 @@ public class Ticket {
     public Ticket(Flight flight, User user) {
         this.flight = flight;
         this.user = user;
-        ticketId = "WH-"+flight.getFlightId()+"-"+user.getUsername()+"-"+random.nextInt(10)+random.nextInt(10)+random.nextInt(10);
+        ticketId = "TH-"+flight.getFlightId()+"-"+user.getUsername()+"-"+random.nextInt(10)+random.nextInt(10)+random.nextInt(10);
     }
 
     public String getTicketId() {
@@ -39,9 +39,10 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                ", ticketId='" + ticketId + '\'' +
-                "flight=" + flight +
-                '}';
+        return String.format("|%15s",ticketId)+flight+"....................";
+//                "Ticket{" +
+//                ", ticketId='" + ticketId + '\'' +
+//                "flight=" + flight +
+//                '}';
     }
 }

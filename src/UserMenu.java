@@ -60,8 +60,10 @@ public class UserMenu extends Menu {
         System.out.println("Enter your selected filter , if not (press Enter 0)");
         Flight flight = makeFlight();
         System.out.println("Result : ");
+        System.out.println("|FlightId     |Origin    |Destination  |Date      |Time |Price    |Seats |");
+        System.out.println("..........................................................................");
         for (Flight flight1 : flights.compare(flight))
-            System.out.println(flight1);
+           printFlight(flight1.toString());
     }
 
     /**
@@ -101,6 +103,8 @@ public class UserMenu extends Menu {
      * show ticket with this user
      */
     private void showBookedProcess() {
+        System.out.println("|ticketId           |FlightId     |Origin    |Destination  |Date      |Time |Price    |Seats |");
+        System.out.println("..............................................................................................");
         for (Ticket ticket : tickets.searcher(user))
             System.out.println(ticket);
     }

@@ -11,7 +11,7 @@ public class Flight {
     private int price;
     private int seats;
     public void makeFlightId() {
-        flightId = "wh_" + origin.charAt(0) + destination.charAt(0) + "_" + rand.nextInt(10) + rand.nextInt(10);
+        flightId = "WH_" + origin.charAt(0) + destination.charAt(0) + "_" + rand.nextInt(10) + rand.nextInt(10);
     }
     public int getPrice() {
         return price;
@@ -77,14 +77,16 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "flightId='" + flightId + '\'' +
-                ", origin='" + origin + '\'' +
-                ", destination='" + destination + '\'' +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
-                ", price=" + price +
-                ", seats=" + seats +
-                '}';
+        return String.format("|%13s|%10s|%13s|%10s|%5s|%9s|%6s|\n", flightId, origin, destination, date ,time, price, seats)+("..........................................................................");
+//
+//        return "Flight{" +
+//                "flightId='" + flightId + '\'' +
+//                ", origin='" + origin + '\'' +
+//                ", destination='" + destination + '\'' +
+//                ", date='" + date + '\'' +
+//                ", time='" + time + '\'' +
+//                ", price=" + price +
+//                ", seats=" + seats +
+//                '}';
     }
 }

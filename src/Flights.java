@@ -16,6 +16,8 @@ public class Flights extends Worker<String,Flight>{
      * print all flight
      */
     public void flightSchedule() {
+        System.out.println("|FlightId     |Origin    |Destination  |Date      |Time |Price    |Seats |");
+        System.out.println("..........................................................................");
         searcher(null).forEach(flight ->  Menu.printFlight(flight.toString()));
     }
 
