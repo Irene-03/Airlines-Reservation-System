@@ -1,42 +1,41 @@
 import java.util.Random;
 
-
 public class Ticket {
     Random random = new Random();
-    private Flight flight;
-    private User user;
+    private String flight;
+    private String user;
     private String ticketId;
 
+    public Ticket() {
+        user = null;
+        ticketId = null;
+        flight = null;
+    }
 
-    public Ticket(Flight flight, User user) {
+    public Ticket(String flight, String user) {
         this.flight = flight;
         this.user = user;
-        ticketId = "WH-"+flight.getFlightId()+"-"+user.getUsername()+"-"+random.nextInt(10)+random.nextInt(10)+random.nextInt(10);
+        ticketId = "TH-"+flight.trim()+"-"+user.trim()+"-"+random.nextInt(10)+random.nextInt(10)+random.nextInt(10);
+    }
+    public String toString() {
+        return Menu.formatting(ticketId)+Menu.formatting(user)+ Menu.formatting(flight);
     }
 
     public String getTicketId() {
         return ticketId;
     }
 
-    public Flight getFlight() {
+    public String getFlight() {
         return flight;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if(o instanceof Flight flight1)
-            if(flight.equals(flight1)) return true;
-        if (o instanceof  User user1)
-            if(user.equals(user1)) return true;
-        if (o instanceof String id)
-            return ticketId.equals(id) || flight.equals(id);
-        return false;
+    public Ticket convertToObj(String obj){
+        ticketId = obj.substring(0,20);
+        flight=obj.substring(20,40);
+        user=obj.substring(40,60);
+        return this;
     }
-
-
-
 }

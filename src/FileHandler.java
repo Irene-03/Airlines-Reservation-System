@@ -3,114 +3,92 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class FileHandler<K, T > {
-//-------------------------------------check fixed size and obj size in math--------------------------------------------------
+public class FileHandler {
+    /**
+     * for remove -> choose shift or write null -> nul;: is easy  and don't need objNumber parameters ,
+     * but shift is provide mistake if handel in good way -> if choose shift ,I must add obj number parameter.
+     */
     protected RandomAccessFile raf;
-    public final int FIXED_SIZE=20;
-    public final int OBJ_SIZE=50;
+    public final int FIXED_SIZE;
+    public final int OBJ_SIZE;
+    public int objNumber = 3; // for number of object to remove and handel after write that
 
-    public void add(String obj) throws IOException {
-        writeObj(0,obj);
+    public FileHandler(RandomAccessFile raf, int fixed_size, int obj_size) {
+        this.raf = raf;
+        FIXED_SIZE = fixed_size;
+        OBJ_SIZE = obj_size;
     }
-    public boolean remove(String id) throws IOException {
-        int pointer= findValue(id);
-        for (long i = pointer; i < raf.length() / OBJ_SIZE; i++)
-           return writeObj(pointer,readObj(pointer+1));
-        return false;
-    }
-    public int findValue(String id) throws IOException {
-        for (int i = 0; i < raf.length()/OBJ_SIZE ; i++)
-            if (readPart(FIXED_SIZE,i*FIXED_SIZE).equals(id))
-                return i*FIXED_SIZE;
-        return -1;
-    }
-    public String readObj(long pointer) throws IOException {
-        raf.seek(pointer);
-        return raf.readLine();
-    }
-    public String readPart(int size , int pointer) throws IOException {
-        String temp="";
-        raf.seek(pointer);
-        for (int i = 0; i < size; i++)
-            temp += raf.readChar();
-        return temp;
-    }
+
     public boolean writeObj(long pointer, String obj) throws IOException {
-        if (pointer == 0) pointer= raf.length();
         raf.seek(pointer);
-        raf.writeUTF(obj+"\n");
-        raf.close();
+        if (pointer == -3) raf.seek(raf.length());
+        raf.writeBytes(obj + "\n");
         return true;
     }
-    public <E> List<T> searcher (E e) throws IOException {
-        List<T> list = new ArrayList<>();
-//        for (long i = 0; i < raf.length() / OBJ_SIZE; i++)
-//            T temp = E.convert(readObj(i));
-//            if(temp.equals(e)) list.add(temp);
-//        }
-//        data.values().stream().filter(t ->t.equals(e)).forEach(list::add);
-//        return list;
+
+
+    public int existValue(String id) throws IOException {
+        for (int i = 0; i < raf.length() / OBJ_SIZE; i++)
+            if (readPart(FIXED_SIZE, i * OBJ_SIZE).trim().equals(id))
+                return i * OBJ_SIZE;
+            else if(readPart(FIXED_SIZE, i * OBJ_SIZE).trim().equals(null))
+                return -2;
+        return -1;
     }
 
-//    protected FileHandler(int fixed_size, int num) {
-//        SIZE = fixed_size;
-//    }
-//
-//    public String findValue(K k) throws IOException {
-//        for (int i = 0; i < raf.length() / SIZE; i++)
-//            if (readNChar(SIZE, i * SIZE).equals(k)){
-//                return readNChar(NUM, SIZE*i);
-//    }
-//        return null;
-//    }
-//    public boolean existValue(K k) throws IOException {
-//        for (int i = 0; i < raf.length()/SIZE ; i++)
-//            if (readNChar(SIZE,i*SIZE).equals(k))
-//                return true;
-//        return false;
-//    }
-//
-//
-//
-//    public boolean add (K k, String obj) throws IOException {
-//        if (!existValue(k)) return false;
-//        else {
-//            try {
-//                raf.seek(raf.length());
-//                raf.writeUTF(obj);
-//                raf.close();
-//                return true;
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//    }
-////---------------------------------------------------------------
-//    public boolean remove (K k) throws IOException {
-//        if (existValue(k)) {
-//            for (int i = 0; i < raf.length()/SIZE ; i++)
-//                if (readNChar(SIZE,i*SIZE).equals(k)) {
-//                    for()
-//                    raf.writeUTF(readNChar(NUM,i*SIZE));
-//                    raf.seek(i * SIZE);
-//
-//                }
-//            return true;
-//        }else return false;
-//    }
-//    public <E> List<T> searcher (E e){
-//        List<T> list = new ArrayList<>();
-//        data.values().stream().filter(t ->t.equals(e)).forEach(list::add);
-//        return list;
-//    }
-//
-//    public String readNChar(int size , int pointer) throws IOException {
-//        String temp="";
-//        raf.seek(pointer);
-//        for (int i = 0; i < size; i++)
-//            temp += raf.readChar();
-//        return temp;
-//    }
-//
-//
+    public String readPart(int size, long pointer) throws IOException {
+        byte[] bytes = new byte[size];
+        raf.seek(pointer);
+        raf.read(bytes);
+        return new String(bytes);
+    }
+
+    public String findValue(String id) throws IOException {
+        int pointer = existValue(id);
+        if (pointer > -1) return readPart(OBJ_SIZE, pointer); // or readPart(OBJ_SIZE,pointer)
+        return null;
+    }
+
+    public boolean add(String obj) throws IOException {
+        if (existValue(obj.substring(0, FIXED_SIZE).trim()) == -1)
+            return writeObj(0, obj);
+        else if (existValue(null) >-1)
+            return writeObj(existValue(null),obj);
+
+        return false;
+    }
+
+    public List<String> searcher(String e) throws IOException {
+        List<String> list = new ArrayList<>();
+        for (long i = 0; i < raf.length() / OBJ_SIZE; i++) {
+            String temp = readPart(OBJ_SIZE,i * OBJ_SIZE);
+            if (compare(temp, e))
+                list.add(temp);
+        }
+        return list;
+    }
+
+    public boolean compare(String st1, String st2) {
+        for (int i = 1; i <( OBJ_SIZE / FIXED_SIZE)-1; i++)
+            if(!equalsCompare(st1.substring(i * FIXED_SIZE, (i+1) *FIXED_SIZE ).trim(),(st2.substring(i * FIXED_SIZE, (i+1) * FIXED_SIZE ).trim() )))
+                return false;
+        return true;
+    }
+    public boolean equalsCompare(String st1,String st2){
+        return (((st1.equals(st2)) || st2.equals("") || st2.equals("0"))&& !st1.equals("null"));
+    }
+
+    public boolean remove(String id , String empty) throws IOException {
+        int pointer = existValue(id);
+        if (pointer > -1)
+            return writeObj(pointer,empty); // choose shift or write null
+        return false;
+    }
+
+    public void rewrite(String flight) throws IOException {
+        int pointer = existValue(flight.substring(0, FIXED_SIZE).trim());
+        if (pointer > -1) writeObj(pointer , flight);
+        else writeObj(-3, flight);
+
+    }
 }

@@ -1,19 +1,18 @@
+import java.io.IOException;
+import java.io.RandomAccessFile;
 
-public class Users extends Worker<String , User> {
-    private static final Users instance = new Users();
+public class Users extends FileHandler{
 
-    private Users() {
-        add("admin", new User("admin", "admin"));
+    public Users(RandomAccessFile raf) {
+        super(raf, 20, 81);
     }
-    public User check( String user , String pass){
-        if (existValue(user))
-            if(findValue(user).getPassword().equals(pass))
-                return findValue(user);
+
+    public User check(String user, String pass) throws IOException {
+        User user1 = new User().convertToObj(findValue(user));
+        if(user1 == null) return null;
+        if(user1.getPassword().trim().equals(pass))return user1;
         return null;
     }
-    public static Users getInstance() {
-        return instance;
-    }
+
 
 }
-

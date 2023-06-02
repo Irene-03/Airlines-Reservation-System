@@ -1,37 +1,21 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 
-public class Flights extends Worker<String,Flight>{
-    private static final Flights instance = new Flights();
-    private final Tickets tickets=Tickets.getInstance();
+public class Flights extends FileHandler{
 
-    private Flights() {
+    protected Tickets tickets;
+
+    public Flights(Tickets tickets, RandomAccessFile raf) {
+        super(raf, 20, 141);
+        this.tickets=tickets;
     }
 
-    public static Flights getInstance() {
-        return instance;
+    public void flightSchedule() throws IOException {
+        searcher(String.format("%130s","")).forEach(Menu::printFlight);
     }
 
-    public void flightSchedule() {
-        searcher(null).forEach(flight ->  Menu.printFlight(flight.toString()));
-    }
-
-    public boolean removeFlight(String id) {
-        if (remove(id))
-            return tickets.removeFlight(id);
+    public boolean removeFlight(String id) throws IOException {
+        if (remove(id , new Flight().toString())) return true;/*tickets.removeFlight(id);*/
         return false;
     }
-
-    public List<Flight> compare(Flight flight) {
-        List<Flight> list =new ArrayList<>() ;
-        searcher(null).stream().filter(flight::compare).forEach(list::add);
-//
-//        for(Flight flight1 : searcher(null)){
-//            if((flight2 = flight.compare(flight1)) != null)
-//                list.add(flight2);
-//        }
-        return list;
-    }
-
-
 }
