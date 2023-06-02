@@ -15,6 +15,12 @@ public class Tickets extends Worker<String, Ticket> {
         add(ticket.getTicketId(), ticket);
     }
 
+    /**
+     * when a flight removed then with id , we cancel the thicket include this flight ,
+     * and remove that ticket from database
+     * @param id id of flight
+     * @return just true show that finished
+     */
     public boolean removeFlight(String id) {
         for (Ticket ticket : searcher(id)) {
             ticket.getUser().addNotify (ticket.getFlight());

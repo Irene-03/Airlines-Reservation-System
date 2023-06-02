@@ -4,6 +4,9 @@ public class AdminMenu extends Menu {
         adminMenu();
     }
 
+    /**
+     * just print admin menu
+     */
     public void printAdminMenu() {
         System.out.print("""
                 ::::::::::::::::::::::::::::::::::::::::
@@ -18,6 +21,9 @@ public class AdminMenu extends Menu {
                 """);
     }
 
+    /**
+     * print admin menu and get input means that what admin want to do , and  handel that whit switch and Enum , than call function
+     */
     public void adminMenu() {
         label:
         while (true) {
@@ -36,17 +42,29 @@ public class AdminMenu extends Menu {
         }
     }
 
+    /**
+     * print flight schedule and get flight id from admin
+     * @return flight ID as string type
+     */
     private String chooseFlight() {
         flights.flightSchedule();
         return (inputProcess("Enter Flight ID : "));
     }
 
+    /**
+     * call choose flight function and then call remove function in flights class
+     */
     private void removeProcess() {
         if (!flights.removeFlight(chooseFlight()))
             System.out.println("there is no flight");
 
     }
 
+    /**
+     * find flight that want to update with call chooseFlight and findValue function
+     * if exist that flight than get filter whit call makeFlight function
+     * and update that
+     */
     private void updateProcess() {
         Flight flight = flights.findValue(chooseFlight());
         if (flight == null)
@@ -59,6 +77,10 @@ public class AdminMenu extends Menu {
         }
     }
 
+    /**
+     * get information of new flight whit call makeFlight function and make flight ID than add to database
+     * if there are some flight ID like that , so don't add flight and print a message
+     */
     private void addProcess() {
         Flight flight = makeFlight();
         flight.makeFlightId();

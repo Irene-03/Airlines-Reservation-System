@@ -46,6 +46,9 @@ public class Menu {
         }
     }
 
+    /**
+     * get username and password ,then check if existed , so if exist print error message ,if not make new account
+     */
     private void signUp() {
         String user = inputProcess("username:");
         String pass = inputProcess("password :");
@@ -56,6 +59,10 @@ public class Menu {
 
     }
 
+    /**
+     * get username and password ,then check if existed ,so if exist call admin menu or user menu
+     * and if not print error message
+     */
     private void signIn() {
         String user = inputProcess("username:");
         String pass = inputProcess("password :");
@@ -72,6 +79,10 @@ public class Menu {
         System.out.println(flight);
     }
 
+    /**
+     * get information of flight and make new object of flight class
+     * @return new object of flight class
+     */
     protected Flight makeFlight() {
         String origin = inputProcess("Origin :");
         String destination = inputProcess("Destination :");
@@ -83,6 +94,11 @@ public class Menu {
         int seats = inputNumber();
         return new Flight(origin, destination, date, time, price, seats);
     }
+
+    /**
+     * get time and check if like true version
+     * @return time as string type
+     */
     protected String getTime(){
         String tempDate= inputProcess("Enter the time  (like hh:mm)");
         while ((!tempDate.matches("^[0-2]\\d:[0-5]\\d$") && (!tempDate.equals("0")))) {
@@ -91,6 +107,10 @@ public class Menu {
         }
         return tempDate;
     }
+    /**
+     * get date and check if like true version
+     * @return date as string type
+     */
     protected String getDate() {
         String tempDate= inputProcess("Enter the date (like: YYYY-MM-DD)");
         while ((!tempDate.matches("^\\d\\d\\d\\d-[0-1]\\d-[0-3]\\d$") &&(!tempDate.equals("0")))) {
@@ -100,6 +120,11 @@ public class Menu {
         return tempDate;
     }
 
+    /**
+     * print input message and get something as string type
+     * @param text message that we want to show
+     * @return the input from user
+     */
     public String inputProcess(String text){
         System.out.println(text);
         return scanner.nextLine();

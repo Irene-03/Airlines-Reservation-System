@@ -40,6 +40,10 @@ public class UserMenu extends Menu {
         }
     }
 
+    /**
+     * change user password with check old password ,
+     * get new password and update pass word
+     */
     private void changePassword() {
         String password = inputProcess("previous password :");
         if (user.checkOldPass(password)) {
@@ -48,6 +52,10 @@ public class UserMenu extends Menu {
 
     }
 
+    /**
+     * get filter with call make flight than compare that .
+     * see compare function and makeFlight function
+     */
     private void searchProcess() {
         System.out.println("Enter your selected filter , if not (press Enter 0)");
         Flight flight = makeFlight();
@@ -56,6 +64,11 @@ public class UserMenu extends Menu {
             System.out.println(flight1);
     }
 
+    /**
+     * show flight schedule and get flight id .
+     * if existed then make ticket , reduce the user charge , reduce the seat parameter of flight object,
+     *  if not existed or charge not enough ,print error message
+     */
     private void bookingProcess() {
         flights.flightSchedule();
         Flight flight = flights.findValue(inputProcess("Flight ID :"));
@@ -72,6 +85,9 @@ public class UserMenu extends Menu {
 
     }
 
+    /**
+     * get ticket ID and if existed remove that ,if not print error message
+     */
     private void cancellationProcess() {
         Ticket ticket = tickets.findValue(inputProcess("Ticket ID :"));
         if (ticket != null) {
@@ -81,6 +97,9 @@ public class UserMenu extends Menu {
         } else System.out.println("No ticket with this ID");
     }
 
+    /**
+     * show ticket with this user
+     */
     private void showBookedProcess() {
         for (Ticket ticket : tickets.searcher(user))
             System.out.println(ticket);
@@ -103,6 +122,9 @@ public class UserMenu extends Menu {
                 """);
     }
 
+    /**
+     * get number and add to user charge parameter
+     */
     private void addChargeProcess() {
         System.out.printf("Your current charge :\t%10d\n", user.getCharge());
         System.out.println("How many do you want to charge :");

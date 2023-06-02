@@ -12,24 +12,33 @@ public class Flights extends Worker<String,Flight>{
         return instance;
     }
 
+    /**
+     * print all flight
+     */
     public void flightSchedule() {
         searcher(null).forEach(flight ->  Menu.printFlight(flight.toString()));
     }
 
+    /**
+     * remove flight with flight id if existed , then remove tickets with this flight
+     * @param id
+     * @return
+     */
     public boolean removeFlight(String id) {
         if (remove(id))
             return tickets.removeFlight(id);
         return false;
     }
 
+    /**
+     * compare parameters of input flight with all flight in database and filter that
+     * @param flight that we want to compare with all flight in database
+     * @return a list include that filter after compare
+     */
     public List<Flight> compare(Flight flight) {
         List<Flight> list =new ArrayList<>() ;
         searcher(null).stream().filter(flight::compare).forEach(list::add);
-//
-//        for(Flight flight1 : searcher(null)){
-//            if((flight2 = flight.compare(flight1)) != null)
-//                list.add(flight2);
-//        }
+
         return list;
     }
 

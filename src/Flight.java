@@ -34,6 +34,10 @@ public class Flight {
         return flightId;
     }
 
+    /**
+     * update parameters whit parameters of new flight if it is not empty or 0
+     * @param flightNew flight that admin want to make changes some parameters
+     */
     public void update(Flight flightNew) {
         if (!flightNew.origin.isEmpty()) origin = flightNew.origin;
         if (!flightNew.destination.isEmpty()) destination = flightNew.destination;
@@ -43,6 +47,11 @@ public class Flight {
         if (flightNew.seats != 0) seats = flightNew.seats;
     }
 
+    /**
+     * compare parameters whit new flight
+     * @param flight that we want compared parameters
+     * @return true if new flight parameters 0 or equals the old flight
+     */
     public boolean compare(Flight flight) {
         return (origin.equals("0") || origin.equals(flight.origin)) &&
                 (destination.equals("0") || destination.equals(flight.destination)) &&
