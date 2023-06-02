@@ -75,7 +75,7 @@ public class UserMenu extends Menu {
     private void cancellationProcess() {
         Ticket ticket = tickets.findValue(inputProcess("Ticket ID :"));
         if (ticket != null) {
-            user.updateCharge(-(ticket.getFlight().getPrice()));
+            user.updateCharge(ticket.getFlight().getPrice());
             ticket.getFlight().updateSeats(1);
             tickets.remove(ticket.getTicketId());
         } else System.out.println("No ticket with this ID");
